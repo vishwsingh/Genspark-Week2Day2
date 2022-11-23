@@ -12,9 +12,8 @@ public class TestWordStream {
 
     public static boolean isPalindrome(String s)
     {
-        String temp  = s.replaceAll("\\s+", "").toLowerCase();
-        return IntStream.range(0, temp.length() / 2)
-                .noneMatch(i -> temp.charAt(i) != temp.charAt(temp.length() - i - 1));
+        String new_S  = s.replaceAll("\\s+", "").toLowerCase();
+        return IntStream.range(0, new_S.length() / 2).noneMatch(i -> new_S.charAt(i) != new_S.charAt(new_S.length() - i - 1));
     }
     public static void main(String[] args) throws IOException {
 
@@ -107,6 +106,17 @@ public class TestWordStream {
                     .collect(Collectors.groupingBy(String::length));
 
            // System.out.println(groupByLength);
+        } catch (Exception e) {
+            System.out.println("Hi" + e);
+        }
+
+        //i)
+        try {
+            Map<Character, Long> no_character= Files.lines(path)
+                    .flatMap(i -> i.chars().mapToObj(c -> (char) c))
+                    .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+
+             System.out.println(no_character);
         } catch (Exception e) {
             System.out.println("Hi" + e);
         }
