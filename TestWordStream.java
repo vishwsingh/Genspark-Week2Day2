@@ -141,9 +141,12 @@ public class TestWordStream {
             System.out.println("Hi" + e);
         }
 
-        //last question, anagram
-//        try {
-//           // Stream<String> stream;
+     //   last question, anagram
+        try {
+
+            Files.lines(path)
+                    .collect(Collectors.groupingBy(TestWordStream::letters));
+           // Stream<String> stream;
 //            Map<String, List<String>> anagrams =
 //                stream.collect(Collectors.groupingBy(w -> {
 //                    try {
@@ -152,9 +155,9 @@ public class TestWordStream {
 //                        throw new RuntimeException(e);
 //                    }
 //                }));
-//         } catch (Exception e) {
-//                 System.out.println("Hi" + e);
-//    }
+         } catch (Exception e) {
+                 System.out.println("Hi" + e);
+    }
 
         try {
          //   Files.lines(path)
@@ -165,6 +168,10 @@ public class TestWordStream {
 
 
 
+    }
+
+    private static <K, T> K letters(T t) {
+        return null; //just for something to return for now
     }
 
     public static String sorted(String word) {
