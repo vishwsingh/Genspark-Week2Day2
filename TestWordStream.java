@@ -2,12 +2,12 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
 public class TestWordStream {
 
     public static boolean isPalindrome(String s)
@@ -15,6 +15,13 @@ public class TestWordStream {
         String new_S  = s.replaceAll("\\s+", "").toLowerCase();
         return IntStream.range(0, new_S.length() / 2).noneMatch(i -> new_S.charAt(i) != new_S.charAt(new_S.length() - i - 1));
     }
+
+    static Function<String, Map<Character, Long>> letterE = (inputString) -> inputString.toLowerCase()
+            .chars()
+            .mapToObj(c -> (char) c)
+            .filter(x -> x== 'e')
+            .collect(Collectors.groupingBy(c ->c, TreeMap<Character, Long>::new, Collectors.counting()));
+
     public static void main(String[] args) throws IOException {
 
       //  String file_path = "/C://Users//vishw//Downloads//words.txt";
@@ -115,8 +122,20 @@ public class TestWordStream {
             Map<Character, Long> no_character= Files.lines(path)
                     .flatMap(i -> i.chars().mapToObj(c -> (char) c))
                     .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        } catch (Exception e) {
+            System.out.println("Hi" + e);
+        }
 
-             System.out.println(no_character);
+        //j) Incomplete but did mostly
+
+        try {
+        //    Stream<String> stream = Files.lines(Paths.get(s)); stream.flatMap(line-> Arrays.stream(line.trim().split(" ")))
+              //      .filter(word->word.length()>0)
+          //          .map(letterE)
+                //    .map(mapValuesSum)
+         //           .reduce(0l,Long::sum);
+               //     .count();
+
         } catch (Exception e) {
             System.out.println("Hi" + e);
         }
