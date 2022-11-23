@@ -144,15 +144,18 @@ public class TestWordStream {
      //   last question, anagram
         try {
 
-            Files.lines(path)
-                    .collect(Collectors.groupingBy(TestWordStream::letters));
-           // Stream<String> stream;
-//            Map<String, List<String>> anagrams =
+
+            Files.lines(path).collect(Collectors.groupingBy(TestWordStream::letters));
+            //adding
+           // Stream<String> stream; Map<String, List<String>> anagrams =
 //                stream.collect(Collectors.groupingBy(w -> {
 //                    try {
+
 //                        return sorted(Files.lines(path).toString());
+
 //                    } catch (IOException e) {
 //                        throw new RuntimeException(e);
+
 //                    }
 //                }));
          } catch (Exception e) {
@@ -180,14 +183,14 @@ public class TestWordStream {
         return new String(chars);
     }
 
-    private static void isAnag_Stream(String source, String target) {
+    private static void isAnag_Stream(String first, String second) {
 
-        boolean isAnagram = Stream.of(source.toLowerCase().split(""))
-                .sorted()
-                .collect(Collectors.joining())
-                .equals(
-                        Stream.of(target.toLowerCase().split(""))
+        boolean isAnagram = Stream.of(first.toLowerCase()
+                        .split(""))
+                .sorted().collect(Collectors.joining()).equals(
+                        Stream.of(second.toLowerCase().split(""))
                                 .sorted()
+                                //collect
                                 .collect(Collectors.joining()));
     }
 }
