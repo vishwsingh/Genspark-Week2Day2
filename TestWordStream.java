@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+
 public class TestWordStream {
 
     public static boolean isPalindrome(String s)
@@ -140,5 +141,46 @@ public class TestWordStream {
             System.out.println("Hi" + e);
         }
 
+        //last question, anagram
+//        try {
+//           // Stream<String> stream;
+//            Map<String, List<String>> anagrams =
+//                stream.collect(Collectors.groupingBy(w -> {
+//                    try {
+//                        return sorted(Files.lines(path).toString());
+//                    } catch (IOException e) {
+//                        throw new RuntimeException(e);
+//                    }
+//                }));
+//         } catch (Exception e) {
+//                 System.out.println("Hi" + e);
+//    }
+
+        try {
+         //   Files.lines(path)
+
+        } catch (Exception e) {
+            System.out.println("Hi" + e);
+        }
+
+
+
+    }
+
+    public static String sorted(String word) {
+        char[] chars = word.toCharArray();
+        Arrays.sort(chars);
+        return new String(chars);
+    }
+
+    private static void isAnag_Stream(String source, String target) {
+
+        boolean isAnagram = Stream.of(source.toLowerCase().split(""))
+                .sorted()
+                .collect(Collectors.joining())
+                .equals(
+                        Stream.of(target.toLowerCase().split(""))
+                                .sorted()
+                                .collect(Collectors.joining()));
     }
 }
