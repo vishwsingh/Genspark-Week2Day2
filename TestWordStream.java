@@ -2,6 +2,8 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -99,14 +101,15 @@ public class TestWordStream {
             System.out.println("Hi" + e);
         }
 
+        //h) Grouping the words by length
+        try {
+            Map<Integer, List<String>> groupByLength = Files.lines(path)
+                    .collect(Collectors.groupingBy(String::length));
 
-//        try {
-//            Files.lines(path)
-//                    .collect(groupingBy();
-//
-//        } catch (Exception e) {
-//            System.out.println("Hi" + e);
-//        }
+           // System.out.println(groupByLength);
+        } catch (Exception e) {
+            System.out.println("Hi" + e);
+        }
 
     }
 }
